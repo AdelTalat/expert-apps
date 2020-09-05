@@ -1,1 +1,136 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$expert-apps-primary: mat-palette($mat-indigo);
+$expert-apps-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$expert-apps-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$expert-apps-theme: mat-light-theme($expert-apps-primary, $expert-apps-accent, $expert-apps-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($expert-apps-theme);
+
 /* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body {
+    margin: 0;
+    background-color: #fbfeff;
+    background-image: url('../src/assets/images/logo-in-bg.png');
+    background-position-x: -30%;
+    background-repeat: no-repeat;
+    background-position-y: 20%;
+}
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    width: 1200px;
+    margin: auto;
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.btn {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 25px;
+    padding: 10px 20px;
+    border: none;
+    &.btn-info {
+        background: rgba(28,151,233,1);
+        background: -moz-linear-gradient(left, rgba(28,151,233,1) 0%, rgba(0,113,188,1) 100%);
+        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(28,151,233,1)), color-stop(100%, rgba(0,113,188,1)));
+        background: -webkit-linear-gradient(left, rgba(28,151,233,1) 0%, rgba(0,113,188,1) 100%);
+        background: -o-linear-gradient(left, rgba(28,151,233,1) 0%, rgba(0,113,188,1) 100%);
+        background: -ms-linear-gradient(left, rgba(28,151,233,1) 0%, rgba(0,113,188,1) 100%);
+        background: linear-gradient(to right, rgba(28,151,233,1) 0%, rgba(0,113,188,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c97e9', endColorstr='#0071bc', GradientType=1 );
+    }
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
+mat-paginator {
+    margin: 30px 0 50px;
+    .mat-paginator-container {
+        justify-content: center;
+        .mat-paginator-page-size {
+            display: none;
+        }
+        .mat-paginator-range-actions {
+            .mat-paginator-navigation-first {
+                order: 1;
+                margin-right: 5px;
+            }
+            .mat-paginator-navigation-previous {
+                order: 2;
+            }
+            .mat-paginator-range-label {
+                order: 3;
+            }
+            .mat-paginator-navigation-next {
+                order: 4;
+            }
+            .mat-paginator-navigation-last {
+                order: 5;
+                margin-left: 5px;
+            }
+            .mat-icon-button {
+                background-color: #fff;
+                border: 1px solid #b8d0dd;
+                border-radius: 4px;
+                width: 35px;
+                height: 35px;
+                line-height: 33px;
+                .mat-paginator-icon {
+                    color: #b8d0dd;
+                }
+            }
+        }
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mat-form-field-infix {
+    width: 300px !important;
+}
+
+.error-msg {
+    .error-danger {
+        margin-top: 0;
+        color: red;
+    }
+}
+
+.tooltip-color {
+    background-color: #788DA5;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+}

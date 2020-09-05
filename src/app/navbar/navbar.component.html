@@ -1,0 +1,13 @@
+<nav class="main-navbar">
+    <div class="container">
+        <div class="row">
+            <img src="../../assets/images/logo.png" title="Expert Apps" alt="Expert Apps Logo">
+    
+            <ul class="navbar-links">
+                <li class="navbar-item" *ngFor="let item of navItems; index as i">
+                    <a href="#" [ngClass]="{'active': i === 0}">{{ item | titlecase }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,108 @@
+<div class="container">
+    <div class="row">
+        <span>
+            {{ dataSource.data.length }} Users
+        </span>
+        <button class="btn btn-info" (click)="openDialog()">Create New User</button>
+    </div>
+    <table mat-table [dataSource]="dataSource" #mytable>
+
+        <ng-container matColumnDef="expert-name">
+            <th mat-header-cell *matHeaderCellDef>Expert Name</th>
+            <td mat-cell *matCellDef="let element"> {{element?.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let element"> {{element?.email}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="country">
+            <th mat-header-cell *matHeaderCellDef>Country</th>
+            <td mat-cell *matCellDef="let element"> {{element?.address?.city}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="joined-date">
+            <th mat-header-cell *matHeaderCellDef>Joined Date</th>
+            <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+                <div class="action-btn">
+                    <span class="action-icon view-icon" matTooltip="View" matTooltipClass="tooltip-color">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="21.048" height="14" viewBox="0 0 21.048 14">
+                            <path
+                                d="M10185.2,11882.537a.692.692,0,0,1,0-.794c.179-.248,4.437-6.1,9.873-6.1s9.693,5.854,9.873,6.1a.682.682,0,0,1,0,.794c-.18.25-4.434,6.1-9.873,6.1S10185.376,11882.787,10185.2,11882.537Zm1.372-.4c1.026,1.271,4.5,5.156,8.5,5.156s7.477-3.885,8.5-5.153c-1.029-1.273-4.5-5.158-8.5-5.158S10187.6,11880.869,10186.569,11882.14Zm4.545,0a3.957,3.957,0,1,1,3.956,4.037A4,4,0,0,1,10191.114,11882.14Zm1.318,0a2.638,2.638,0,1,0,2.638-2.687A2.669,2.669,0,0,0,10192.433,11882.14Z"
+                                transform="translate(-10184.548 -11875.142)" fill="#788da5" stroke="rgba(0,0,0,0)"
+                                stroke-miterlimit="10" stroke-width="1" /></svg>
+                    </span>
+                    <span class="action-icon delete-icon" matTooltip="Delete" matTooltipClass="tooltip-color">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20.001" viewBox="0 0 16 20.001">
+                            <path
+                                d="M442.031,477.64a1.857,1.857,0,0,1-1.844-1.786l-.532-11.339h-.337a.62.62,0,0,1-.615-.625h0V461.7a1.553,1.553,0,0,1,1.539-1.562h3.384v-.625a1.863,1.863,0,0,1,1.846-1.875h2.461a1.863,1.863,0,0,1,1.846,1.875v.625h3.385A1.551,1.551,0,0,1,454.7,461.7v2.188a.62.62,0,0,1-.615.625h-.336l-.532,11.339a1.857,1.857,0,0,1-1.844,1.786Zm-.614-1.845a.619.619,0,0,0,.614.6h9.344a.619.619,0,0,0,.614-.6l.53-11.28H440.888ZM439.935,461.7v1.563h13.537V461.7a.31.31,0,0,0-.307-.312H440.242a.31.31,0,0,0-.307.31Zm4.923-2.187v.625h3.691v-.625a.62.62,0,0,0-.615-.625h-2.461a.621.621,0,0,0-.614.624Zm4.307,15v-8.125a.615.615,0,1,1,1.231,0v8.125a.615.615,0,1,1-1.231,0Zm-3.077,0v-8.125a.615.615,0,1,1,1.231,0v8.125a.615.615,0,1,1-1.231,0Zm-3.077,0v-8.125a.615.615,0,1,1,1.231,0v8.125a.615.615,0,1,1-1.231,0Z"
+                                transform="translate(-438.703 -457.641)" fill="#788da5" /></svg>
+                    </span>
+                    <span class="action-icon edit-icon" matTooltip="Edit" matTooltipClass="tooltip-color">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                            <path
+                                d="M477.64,460.879l-1.477-1.474a2.84,2.84,0,0,0-3.993,0l-11.2,11.208-.2.268-.076.3-2.191,6.554a.636.636,0,0,0,.394.812.464.464,0,0,0,.21.034.413.413,0,0,0,.2-.027l6.888-2.293.011.005.1-.066.181-.008-.05-.1,11.209-11.22A2.838,2.838,0,0,0,477.64,460.879Zm-17.527,16.044,1.553-4.636,3.09,3.087Zm5.838-2.168-3.657-3.654,9.361-9.36,3.657,3.655Zm10.916-10.932,0,.014-.64.648-3.661-3.658.513-.514a1.547,1.547,0,0,1,2.177,0l1.49,1.48A1.542,1.542,0,0,1,476.866,463.823Z"
+                                transform="translate(-458.462 -458.585)" fill="#788da5" /></svg>
+                    </span>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <div class="no-data" *ngIf="noData">
+        <p>An error occurred, please try again later.</p>
+    </div>
+
+    <mat-paginator [length]="dataSource.length" [pageSize]="5" showFirstLastButtons></mat-paginator>
+
+</div>
+
+<ng-template #dialog>
+    <h1 mat-dialog-title>Add New User</h1>
+    <form #newUser="ngForm" (ngSubmit)="onSubmit(newUser)">
+        <div mat-dialog-content>
+            <div>
+                <mat-form-field>
+                    <mat-label>Expert Name</mat-label>
+                    <input matInput maxlength="25" type="text" required [(ngModel)]="name" name="name"
+                        #expertName="ngModel">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" required [(ngModel)]="email" name="email" #expertMail="ngModel"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                </mat-form-field>
+                <div *ngIf="expertMail.touched" class="error-msg">
+                    <p class="error-danger" *ngIf="expertMail.errors?.pattern">This is not valid Email!</p>
+                </div>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Country</mat-label>
+                    <input matInput type="text" maxlength="30" required [(ngModel)]="countery" name="countery"
+                        #expertCountery="ngModel">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Joined Date</mat-label>
+                    <input matInput type="date" required [(ngModel)]="date" name="date" #expertDate="ngModel">
+                </mat-form-field>
+            </div>
+        </div>
+        <div mat-dialog-actions>
+            <button class="btn btn-info" type="submit" [disabled]="!newUser.form.valid">Add User</button>
+        </div>
+    </form>
+</ng-template>
